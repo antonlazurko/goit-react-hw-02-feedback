@@ -8,6 +8,7 @@ const Controls = ({ options, onLeaveFeedback }) => {
       return (
         <div key={type}>
           <button
+            className={styles.buttons}
             type="button"
             onClick={() => {
               onLeaveFeedback(type);
@@ -17,6 +18,8 @@ const Controls = ({ options, onLeaveFeedback }) => {
           </button>
         </div>
       );
+    } else {
+      return console.log();
     }
   });
 };

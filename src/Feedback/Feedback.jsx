@@ -1,6 +1,5 @@
 import styles from './Feedback.module.css';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Section from './Section';
 import Controls from './FeedbackOptions';
 import Statistic from './Statistic';
@@ -43,26 +42,30 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <Section title={'Please leave feedback'}>
-          <Controls
-            options={Object.keys(this.state)}
-            onLeaveFeedback={this.onLeaveFeedback}
-          />
-        </Section>
-        <Section title={'Statistic'}>
-          {!this.state.total && (
-            <Notification message="No feedback given"></Notification>
-          )}
-          {this.state.total && (
-            <Statistic
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={this.state.total}
-              positivePercentage={this.state.positiveFeedbackPercentage}
+        <Section title={'Please leave feedback'} className="Section">
+          <div className={styles.Controls}>
+            <Controls
+              options={Object.keys(this.state)}
+              onLeaveFeedback={this.onLeaveFeedback}
             />
-          )}
+          </div>
         </Section>
+        <div className={styles.Statistic}>
+          <Section title={'Statistic'} className="Section">
+            {!this.state.total && (
+              <Notification message="No feedback given"></Notification>
+            )}
+            {this.state.total && (
+              <Statistic
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={this.state.total}
+                positivePercentage={this.state.positiveFeedbackPercentage}
+              />
+            )}
+          </Section>
+        </div>
       </div>
     );
   }

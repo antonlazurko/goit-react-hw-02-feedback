@@ -6,10 +6,17 @@ const Statistic = props => {
   const types = Object.keys(props);
   return types.map(type => {
     return (
-      <div key={type}>
-        <span className="Counter__value">
-          {type}:{props[type]}
-          {props[type] === 'Positive Feedback' && '%'}
+      <div key={type} className={styles.stats}>
+        <span className={styles.type}>
+          {type === 'positivePercentage'
+            ? 'POSITIVE PERCENTAGE'
+            : type.toUpperCase()}
+          :
+          <span className={styles.value}>
+            {props[type]}
+
+            {type === 'positivePercentage' && '%'}
+          </span>
         </span>
       </div>
     );
